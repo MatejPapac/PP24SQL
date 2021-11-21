@@ -1,4 +1,4 @@
-drop database if exist githubprimjer:
+drop database if exists githubprimjer;
 create database githubprimjer character set utf8;
 use githubprimjer;
 
@@ -7,4 +7,4 @@ create table git(
     naziv varchar(50) not null
 );
 
-insert into git(sifra,naziv) values (null,`Test`);
+insert into git(sifra,naziv) values (null,"Test");
