@@ -69,7 +69,7 @@ create table naziv(
 alter table naziv add foreign key (naziv) references jelo(sifra);
 alter table cijena add foreign key (cijena) references jelo(sifra);
 alter table jelo add foreign key (vrsta) references vrstaJela(sifra);
-alter table pice add foreign key (vrsta) references vrstePica(sifra);
+alter table pice add foreign key (vrsta) references vrstaPica(sifra);
 alter table mjesto add foreign key (rezervacija) references rezervacija(sifra);
 alter table rezervacija add foreign key (mjesto) references mjesto(sifra);
 
