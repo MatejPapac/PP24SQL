@@ -12,66 +12,62 @@ create table jelo(
     );
 
 create table pice(
-    sifra int not null primary key auto_increment,
-    naziv int not null,
-    vrsta int not null
+        sifra int not null primary key auto_increment,
+        naziv int not null,
+        vrsta int not null
 
 
 );
 
-create table rezervacija(
-sifra int not null primary key auto_increment,
-datumiVrijeme datetime not null,
-osoba varchar(50) not null,
-brojRezerviranihMjesta varchar(50) not null,
-mjesto int not null ,
-napomena varchar(50)
+    create table rezervacija(
+        sifra int not null primary key auto_increment,
+        datumiVrijeme datetime not null,
+        osoba varchar(50) not null,
+        brojRezerviranihMjesta varchar(50) not null,
+        mjesto int not null ,
+        kontakt varchar(50) not null,
+        napomena varchar(50)
 );
 
 create table mjesto(
-    sifra int not null primary key  auto_increment,
-    naziv int not null,
-    rezervacija int not null,
-    brojMjesta varchar(50)
+        sifra int not null primary key  auto_increment,
+        naziv int not null,
+        rezervacija boolean,
+        brojStolica varchar(50)
+  
 
  
 );
 
-create table vrstaPica (
-    sifra int not null primary key auto_increment,
-    vrsta int not null,
-    vina varchar(50) not null,
-    zestice varchar(50) not null,
-    sokovi varchar(50) not null,
-    piva varchar(50) not null
-
-
-);
-create table vrstaJela (
-    sifra int not null primary key auto_increment,
-    vrsta int not null,
-    pizza varchar(50),
-    tijesta varchar(50),
-    riba varchar(50),
-    odresci varchar(50)
-
-);
-create table cijena(
-    sifra int not null primary key auto_increment,
-    cijena int not null
-
-);
-create table naziv(
-    sifra int not null primary key auto_increment,
-    naziv int not null
+create table jelovnik (
+        sifra int not null primary key auto_increment,
+        vrsta int not null ,
+        cijena int not null,
+        naziv int not null,
+        pizza varchar (50) not null,
+        tijesta varchar (50) not null,
+        riba varchar (50) not null,
+        odresci varchar(50) not null,
+        vina varchar(50) not null,
+        zesta varchar(50) not null,
+        sokovi varchar(50) not null,
+        piva varchar(50) not null
 );
 
-alter table naziv add foreign key (naziv) references jelo(sifra);
-alter table cijena add foreign key (cijena) references jelo(sifra);
-alter table jelo add foreign key (vrsta) references vrstaJela(sifra);
-alter table pice add foreign key (vrsta) references vrstaPica(sifra);
-alter table mjesto add foreign key (rezervacija) references rezervacija(sifra);
-alter table rezervacija add foreign key (mjesto) references mjesto(sifra);
+create table rezervacija_mjesto (
+        sifra int not null primary key auto_increment,
+        rezervacija int not null,
+        mjesto int not null
+);
+
+alter table jelovnik add foreign key (vrsta) references pice(sifra);
+alter table jelovnik add foreign key (vrsta) references jelo(sifra);
+
+alter table rezervacija_mjesto add foreign key (mjesto) references rezervacija(sifra);
+alter table rezervacija_mjesto add foreign key (rezervacija) references mjesto(sifra);
+
+
+
 
 
 
