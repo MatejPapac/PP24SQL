@@ -4,8 +4,8 @@ use zavrsni;
 
 create table jelo(
         sifra  int not null primary key auto_increment,
-        naziv  int not null,
-        cijena int not null,
+        naziv  varchar(50) not null,
+        cijena varchar(50) not null,
         vrsta  int not null 
        
        
@@ -13,7 +13,8 @@ create table jelo(
 
 create table pice(
         sifra int not null primary key auto_increment,
-        naziv int not null,
+        naziv varchar(50) not null,
+        cijena varchar(50) not null,
         vrsta int not null
 
 
@@ -31,7 +32,7 @@ create table pice(
 
 create table mjesto(
         sifra int not null primary key  auto_increment,
-        naziv int not null,
+        naziv varchar(50) not null,
         rezervacija boolean,
         brojStolica varchar(50)
   
@@ -42,8 +43,8 @@ create table mjesto(
 create table jelovnik (
         sifra int not null primary key auto_increment,
         vrsta int not null ,
-        cijena int not null,
-        naziv int not null,
+        cijena varchar(50) not null,
+        naziv varchar(50) not null,
         pizza varchar (50) not null,
         tijesta varchar (50) not null,
         riba varchar (50) not null,
@@ -67,7 +68,19 @@ alter table rezervacija_mjesto add foreign key (mjesto) references rezervacija(s
 alter table rezervacija_mjesto add foreign key (rezervacija) references mjesto(sifra);
 
 
+insert into jelo(sifra,naziv,cijena,vrsta)
+values(null,'Slavonska Pizza','32,00','Pizza'),
+(null,'Pikant Pizza','28,00','Pizza'),
+(null,'Dalmatinska Pizza','30,00','Pizza'),
+(null,'Piletina 4 vrsta sira','35,00','Tijesta');
 
+insert into pice(sifra,naziv,cijena,vrsta)
+values(null,'Cedevita','9,00','Sokovi'),
+(null,'Pelinkovac','8,00','Zesta'),
+(null,'Misni Traminac','14,00','Vina');
+
+insert into rezervacija(sifra,datumiVrijeme,osoba,brojRezerviranihMjesta,mjesto,kontakt,napomena)
+values(null,'12-07-2023','James Maynard','6','Stol 106','Maynard@gmail.com','Ako može da nam pripremite 6 boca vina');
 
 
 
